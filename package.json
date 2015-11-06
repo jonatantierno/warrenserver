@@ -1,0 +1,9 @@
+{
+  "name": "netflix",
+  "description": "Warren Server",
+  "author": "A confused individual <iam@confused.com>",
+  "dependencies": {
+    "express": "4.13.3"
+      },
+  "engine": "node 0.4.1"
+}
