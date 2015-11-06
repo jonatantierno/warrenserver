@@ -4,11 +4,16 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 function myFunction() {
-	var res = "{value: "+$("#stock").val()+"}";
+	var res = "{\"value\": "+$("#stock").val()+"}";
         console.log("set value: "+ res);
-	$.ajax({url: "stock", method: "POST", data: res,  success: function(result){
-		console.log(result);
-    	}
+
+	$.post("stock",
+			{
+		value: $("#stock").val(),
+		},
+		function(data, status){
+
+		console.log("response: " + data);
 	});
 }
 
