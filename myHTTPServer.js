@@ -1,7 +1,9 @@
 //Lets require/import the HTTP module
 var http = require('http');
 var bodyParser = require('body-parser');
-var showMeTheMoney =100;
+var money = 0;
+var coins = 0;
+var shareCoefficient = 1;
 
 //Lets define a port we want to listen to
 const PORT=9559;
@@ -16,24 +18,31 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/stock/', function (req, res) {
-  res.send('Your stock value:'+showMeTheMoney);
+
+app.get('/money/', function (req, res) {
+  money = coins*shareCoefficient;
+  res.send({value: money});
 
 });
+
+app.get('/stock/', function (req, res) {
+  res.send({value: shareCoefficient});
+});
+
 app.post('/stock/', function (req, res) {
-  showMeTheMoney = req.body.value;
-  res.send('Your new stock value:'+showMeTheMoney);
+  shareCoefficient = req.body.value;
+  res.send({value: shareCoefficient});
 
 });
 
 app.get('/coin/', function (req, res) {
-  res.send({value: showMeTheMoney});
+  res.send({value: coins});
 
 });
 
 app.post('/coin/', function (req, res) {
-  showMeTheMoney = showMeTheMoney+1;
-  res.send('Your new stock value:'+showMeTheMoney);
+  coins = coins+1;
+  res.send({value: coins});
 });
 
 
