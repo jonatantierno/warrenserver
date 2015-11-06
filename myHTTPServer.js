@@ -1,5 +1,6 @@
 //Lets require/import the HTTP module
 var http = require('http');
+var bodyParser = require('body-parser');
 var showMeTheMoney =100;
 
 //Lets define a port we want to listen to
@@ -7,6 +8,7 @@ const PORT=9559;
 
 var express = require('express');
 var app = express();
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
