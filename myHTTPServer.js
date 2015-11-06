@@ -24,7 +24,7 @@ app.post('/stock/', function (req, res) {
 });
 
 app.get('/coin/', function (req, res) {
-  res.send('Gimme more coins!!:'+showMeTheMoney);
+  res.send({value: showMeTheMoney});
 
 });
 
