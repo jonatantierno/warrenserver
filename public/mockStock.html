@@ -4,8 +4,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 function myFunction() {
-        console.log("set value: "+$("#test").value);
-	$.ajax({url: "stock", method: "POST", data: "{value: "+$("#test").value+"}",  success: function(result){
+	var res = "{value: "+$("#stock").val()+"}";
+        console.log("set value: "+ res);
+	$.ajax({url: "stock", method: "POST", data: res,  success: function(result){
 		console.log(result);
     	}
 	});
@@ -14,6 +15,6 @@ function myFunction() {
 </script>
 </head>
   Inversión:<br>
-  <input type="number" name="valor" value="100">
+  <input id="stock" type="number" name="valor" value="100">
   <br>
   <button type="button" onClick="myFunction()">Try it</button>
