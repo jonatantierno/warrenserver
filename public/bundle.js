@@ -29822,64 +29822,90 @@
 	var LineChart = __webpack_require__(250).Line;
 
 	var Invest = React.createClass({
-	    displayName: 'Invest',
+	  displayName: 'Invest',
 
-	    render: function render() {
-	        var self = this;
-	        return React.createElement(
-	            Container,
-	            { type: 'main' },
-	            React.createElement(Header, { onHeaderButtonClick: function () {
-	                    self.refs.drawer.show();
-	                } }),
-	            React.createElement(Drawer, { ref: 'drawer', hideable: true }),
-	            React.createElement(
-	                Container,
-	                { type: 'content' },
-	                React.createElement(
-	                    'table',
-	                    null,
-	                    ');',
-	                    React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'td',
-	                            null,
-	                            React.createElement('img', { src: '../assets/images/twitter.jpg', alt: 'Twitter' })
-	                        ),
-	                        React.createElement(
-	                            'td',
-	                            null,
-	                            React.createElement(
-	                                'td',
-	                                null,
-	                                React.createElement('img', { src: '../assets/images/flecha_arriba.png', alt: 'OK' })
-	                            )
-	                        )
-	                    ),
-	                    React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'td',
-	                            null,
-	                            React.createElement('img', { src: '../assets/images/Google.jpg', alt: 'Google' })
-	                        ),
-	                        React.createElement(
-	                            'td',
-	                            null,
-	                            React.createElement(
-	                                'td',
-	                                null,
-	                                React.createElement('img', { src: '../assets/images/flecha_abajo.jpg', alt: 'KO' })
-	                            )
-	                        )
-	                    )
-	                )
-	            )
-	        );
-	    }
+	  selectFacebook: function selectFacebook(e) {
+	    e.preventDefault();
+	    $.ajax({
+	      type: "POST",
+	      url: 'http://warren.ngrok.io/company',
+	      data: { company: "fb" },
+	      success: function success(response) {
+	        console.log("facebook selected", response);
+	        $(location).attr('href', '#/Home');
+	      },
+	      error: function error(e) {
+	        alert("error in facebook selected");
+	      },
+	      dataType: "json"
+	    });
+	  },
+	  selectGoogle: function selectGoogle(e) {
+	    e.preventDefault();
+	    $.ajax({
+	      type: "POST",
+	      url: 'http://warren.ngrok.io/company',
+	      data: { company: "go" },
+	      success: function success(response) {
+	        console.log("Google selected", response);
+	        $(location).attr('href', '#/Home');
+	      },
+	      error: function error() {
+	        alert("error in google selected");
+	      },
+	      dataType: "json"
+	    });
+	  },
+	  alertNotImplemented: function alertNotImplemented(e) {
+	    e.preventDefault();
+	    alert("Not Implemented!");
+	  },
+
+	  render: function render() {
+	    var self = this;
+	    return React.createElement(
+	      Container,
+	      { type: 'main' },
+	      React.createElement(Header, { onHeaderButtonClick: function () {
+	          self.refs.drawer.show();
+	        } }),
+	      React.createElement(Drawer, { ref: 'drawer', hideable: true }),
+	      React.createElement(
+	        Container,
+	        { type: 'content' },
+	        React.createElement(
+	          'div',
+	          { className: 'invest', onClick: this.selectFacebook, id: 'facebook' },
+	          'Facebook',
+	          React.createElement('img', { 'class': 'invest_image', src: '../assets/images/facebook.png' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'invest', onClick: this.selectGoogle, id: 'google' },
+	          'Google',
+	          React.createElement('img', { 'class': 'invest_image', src: '../assets/images/google.png' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'invest', onClick: this.alertNotImplemented, id: 'inditex' },
+	          'Inditex',
+	          React.createElement('img', { 'class': 'invest_image', src: '../assets/images/inditex.png' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'invest', onClick: this.alertNotImplemented, id: 'repsol' },
+	          'Repsol',
+	          React.createElement('img', { 'class': 'invest_image', src: '../assets/images/repsol.png' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'invest', onClick: this.alertNotImplemented, id: 'twitter' },
+	          'Twitter',
+	          React.createElement('img', { 'class': 'invest_image', src: '../assets/images/twitter.png' })
+	        )
+	      )
+	    );
+	  }
 	});
 
 	module.exports = Invest;
