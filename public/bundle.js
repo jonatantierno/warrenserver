@@ -24947,6 +24947,22 @@
 	        var self = this;
 	        var difference = this.state.value * this.state.coeficient - this.state.previousCoeficient * this.state.value;
 	        var symbol = difference > 0 ? '+' : '-';
+	        if (Math.abs(difference) === 0.00) {
+	            symbol = '';
+	        }
+	        var coeficientTextClass;
+	        switch (symbol) {
+	            case '+':
+	                coeficientTextClass = 'positive-balance';
+	                break;
+	            case '-':
+	                coeficientTextClass = 'negative-balance';
+	                break;
+	            default:
+	                console.log('error in colors');
+	                break;
+	        }
+
 	        return React.createElement(
 	            Container,
 	            { type: 'main' },
@@ -24967,7 +24983,7 @@
 	                    ),
 	                    React.createElement(
 	                        Text,
-	                        { className: 'coeficient', type: 'h3Red' },
+	                        { className: 'coeficient ' + coeficientTextClass, type: 'h3' },
 	                        symbol + ' ' + Math.abs(difference).toFixed(2) + ' (' + this.state.coeficient + ' %)'
 	                    ),
 	                    React.createElement(LineChart, { className: 'savings-chart',
@@ -26131,7 +26147,7 @@
 
 
 	// module
-	exports.push([module.id, ".account-info {\n  background-color: #FFF !important;\n  overflow: auto;\n  border-top: 1px solid #d8d8d8;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.products-title {\n  margin-top: 16px;\n  padding: 16px; }\n", ""]);
+	exports.push([module.id, ".account-info {\n  background-color: #FFF !important;\n  overflow: auto;\n  border-top: 1px solid #d8d8d8;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.products-title {\n  margin-top: 16px;\n  padding: 16px; }\n\n.positive-balance {\n  color: #7ed321; }\n\n.neutral-balance {\n  color: #727272; }\n", ""]);
 
 	// exports
 
