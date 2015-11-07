@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-function myFunction() {
-        console.log("Hola!");
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	function myFunction() {
+		console.log("Hola!");
 
-	$.ajax({
-		type: "POST",
-		url: "stock",
-		data: { value: $("#stock").val() },
-		success: function(data, status){
-			console.log("response: " + data);
-			},
-		dataType:"json" 
+		$.ajax({
+			type:"POST",
+			url: "/stock",
+			dataType:'json',
+			data: { value : 32 },
+			success: function(data, status){
+				console.log("response: " + data);
+			}
 		});
-}
+	}
 
-</script>
-</head>
-  Inversión:<br>
-  <input id="stock" type="number" name="valor" value="100">
-  <br>
-  <button type="button" onClick="myFunction()">Try it</button>
+	</script>
+</head> 
+<body>
+Inversión:<br>
+<input id="stock" type="number" name="valor" value="100">
+<br>
+<button type="button" onClick="myFunction()">Try it</button>
+</body>
+</html>
+

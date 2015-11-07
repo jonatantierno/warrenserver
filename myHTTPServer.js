@@ -11,11 +11,11 @@ const PORT=9559;
 var express = require('express');
 var app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
-
 });
 
 
@@ -29,7 +29,7 @@ app.get('/stock/', function (req, res) {
   res.send({value: shareCoefficient});
 });
 
-app.post('/stock/', function (req, res) {
+app.post('/stock', function (req, res) {
   console.log("stock post", req.body);
   shareCoefficient = req.body.value;
   res.send({value: shareCoefficient});
