@@ -30,6 +30,7 @@ app.get('/stock/', function (req, res) {
 });
 
 app.post('/stock/', function (req, res) {
+  console.log("stock post", req.body);
   shareCoefficient = req.body.value;
   res.send({value: shareCoefficient});
 

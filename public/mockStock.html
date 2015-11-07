@@ -4,17 +4,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 function myFunction() {
-	var res = "{\"value\": "+$("#stock").val()+"}";
-        console.log("set value: "+ res);
+        console.log("Hola!");
 
-	$.post("stock",
-			{
-		value: $("#stock").val(),
-		},
-		function(data, status){
-
-		console.log("response: " + data);
-	});
+	$.ajax({
+		type: "POST",
+		url: "stock",
+		data: { value: $("#stock").val() },
+		success: function(data, status){
+			console.log("response: " + data);
+			},
+		dataType:"json" 
+		});
 }
 
 </script>
