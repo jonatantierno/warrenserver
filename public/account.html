@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<title>My account</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+	<script>
+		window.setInterval(slowAlert, 1000);
+
+		function slowAlert () {
+			$.ajax({
+			type:"GET",
+			url: "/stock",
+			dataType:'json',
+			data: { value : $("#stock").val() },
+			success: function(data, status){
+				console.log("response: ", data);
+				$('#account').html("<h4>"+data.value+"€</h4>");
+
+				$('#company').html("<img width=40 src="+data.selectedCompany+".png>");
+
+				if (data.coeficient > 1) {
+					$('#coeficient').css("color", "green");
+					$('#coeficient').html(' <i class="fa fa-caret-square-o-up"></i> ' + data.coeficient );
+				} else {
+					$('#coeficient').css("color", "red");
+					$('#coeficient').html(' <i class="fa fa-caret-square-o-down"></i> ' + data.coeficient );
+				}
+				
+
+				$('#amount').html((data.value * data.coeficient).toFixed(2) + " €");
+			}
+			});
+		}
+
+	</script>
+</head> 
+
+<body>
+
+	<div class="container" id="content">
+		<img src='header.png' width="900px">
+
+		<div class="row">
+			.
+		</div>
+
+		<div class="row">
+                <div class="col-md-8">
+                	<h3>Milenial Investment Account:</h3>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-6">
+                	Fantasticio Romero Gutierrez
+                </div>
+        </div>
+
+        <div class="row">
+        		<div class="col-md-4">
+                	<h4>2100 23 24 5040201204556</h4>
+                </div>
+                <div class="col-md-2">
+                	<h4>Money invested: </h4>
+                </div>
+                <div id="account" class="col-md-2">
+                	<h4>?€</h4>
+                </div>
+        </div>
+
+        <div class="row">
+        		<div class="col-md-6">
+                	Coeficient:
+                </div>
+                <div id="coeficient" class="col-md-6">
+                	0.00
+                </div>
+        </div>
+
+        <div class="row">
+        		<div class="col-md-6">
+                	Current amount:
+                </div>
+                <div id="amount" class="col-md-6">
+                	0.00
+                </div>
+        </div>
+
+        <div class="row">
+        		<div class="col-md-6">
+                	<h4>Company:</h4>
+                </div>
+                <div id="company" class="col-md-2">
+                	
+                </div>
+        </div>
+        <img src='footer.png' width="900px" style="position: absolute; bottom: 32px">
+	</div>
+
+
+
+</body>
+</html>
+
