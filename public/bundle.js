@@ -29832,7 +29832,7 @@
 	      data: { company: "fb" },
 	      success: function success(response) {
 	        console.log("facebook selected", response);
-	        $(location).attr('href', '#/Home');
+	        $(location).attr('href', '#/');
 	      },
 	      error: function error(e) {
 	        alert("error in facebook selected");
@@ -29848,7 +29848,7 @@
 	      data: { company: "go" },
 	      success: function success(response) {
 	        console.log("Google selected", response);
-	        $(location).attr('href', '#/Home');
+	        $(location).attr('href', '#/');
 	      },
 	      error: function error() {
 	        alert("error in google selected");
