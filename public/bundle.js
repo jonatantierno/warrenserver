@@ -24950,13 +24950,17 @@
 	        if (Math.abs(difference) === 0.00) {
 	            symbol = '';
 	        }
-	        var coeficientTextClass;
+	        var coeficientTextStyle;
+	        console.log(symbol);
 	        switch (symbol) {
 	            case '+':
-	                coeficientTextClass = 'positive-balance';
+	                coeficientTextStyle = { color: '#7ed321' };
 	                break;
 	            case '-':
-	                coeficientTextClass = 'negative-balance';
+	                coeficientTextStyle = { color: '#e56141' };
+	                break;
+	            case '':
+	                coeficientTextStyle = { color: '#727272' };
 	                break;
 	            default:
 	                console.log('error in colors');
@@ -24983,7 +24987,7 @@
 	                    ),
 	                    React.createElement(
 	                        Text,
-	                        { className: 'coeficient ' + coeficientTextClass, type: 'h3' },
+	                        { className: 'coeficient', style: coeficientTextStyle, type: 'h3' },
 	                        symbol + ' ' + Math.abs(difference).toFixed(2) + ' (' + this.state.coeficient + ' %)'
 	                    ),
 	                    React.createElement(LineChart, { className: 'savings-chart',
@@ -25452,7 +25456,8 @@
 	    propTypes: {
 	        type: createPropValidator(textStyles),
 	        children: React.PropTypes.string.isRequired,
-	        className: React.PropTypes.string
+	        className: React.PropTypes.string,
+	        style: React.PropTypes.object
 	    },
 	    render: function render() {
 	        var textStyle = textStyles[this.props.type];
@@ -25464,7 +25469,10 @@
 	            className += ' ' + this.props.className;
 	        }
 
-	        return React.createElement(HTMLTag, { className: className }, textContent);
+	        return React.createElement(HTMLTag, {
+	            className: className,
+	            style: this.props.style
+	        }, textContent);
 	    }
 	});
 
