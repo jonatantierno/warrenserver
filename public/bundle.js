@@ -25085,7 +25085,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n  background-color: #FFF;\n  width: 100%;\n  overflow: auto;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24); }\n", ""]);
+	exports.push([module.id, ".header {\n  background-color: #FFF;\n  width: 100%;\n  overflow: auto;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24); }\n\n.btn-header img {\n  width: 24px;\n  height: 24px; }\n", ""]);
 
 	// exports
 
@@ -25690,7 +25690,7 @@
 
 
 	// module
-	exports.push([module.id, ".card {\n  position: relative;\n  background: #fafafa;\n  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);\n  border-radius: 3px;\n  border: 1px solid #d8d8d8;\n  width: 100%;\n  *zoom: 1; }\n  .card:before, .card:after {\n    content: \" \";\n    display: table; }\n  .card:after {\n    clear: both; }\n", ""]);
+	exports.push([module.id, ".card {\n  position: relative;\n  background: #ffffff;\n  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);\n  border-radius: 3px;\n  border: 1px solid #d8d8d8;\n  width: 100%;\n  *zoom: 1; }\n  .card:before, .card:after {\n    content: \" \";\n    display: table; }\n  .card:after {\n    clear: both; }\n", ""]);
 
 	// exports
 
