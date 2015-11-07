@@ -4,15 +4,15 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
 	function myFunction() {
-		console.log("Hola!");
+		console.log("value: ", $("#stock").val());
 
 		$.ajax({
 			type:"POST",
 			url: "/stock",
 			dataType:'json',
-			data: { value : 32 },
+			data: { value : $("#stock").val() },
 			success: function(data, status){
-				console.log("response: " + data);
+				console.log("response: ", data);
 			}
 		});
 	}
